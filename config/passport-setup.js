@@ -1,7 +1,7 @@
 const passport=require('passport');
 const User=require('../models/user-model');
 const GoogleStrategy=require('passport-google-oauth20');
-
+const s=require('../secret');
 passport.serializeUser((user,done)=>{
 done(null,user.id);
 });
@@ -15,9 +15,9 @@ passport.deserializeUser((id,done)=>{
 
 passport.use(
     new GoogleStrategy({
-callbackURL:'/auth/google/redirect',
-clientID:'425304980667-nmvug4ct64ho8d60qcocu5nd9a6esns4.apps.googleusercontent.com',
-clientSecret:'7vh2-euCPHiqf86kiuYmP8Iz'
+callbackURL:s.callbackURL,
+clientID:s.clientID,
+clientSecret:s.clientSecret
 },(AT,RT,profile,done)=>{
 console.log(profile.photos[0].value);
 

@@ -4,8 +4,9 @@ const mongoose=require('mongoose');
 const cookie=require('cookie-session');
 const app=express();
 const passport=require('passport');
+const s=require('./secret');
 const passportSetup=require('./config/passport-setup');
-mongoose.connect('mongodb+srv://mostafa:mostafa123@rest-api-g03hx.mongodb.net/test?retryWrites=true&w=majority',()=>{
+mongoose.connect(s.mongo,()=>{
     console.log('DB is connected');
     
 });
